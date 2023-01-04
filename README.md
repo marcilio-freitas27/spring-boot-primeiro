@@ -8,12 +8,11 @@
 ### Gerando o projeto
 
 No site [start.spring.io](https://start.spring.io/) gerei o projeto Spring com as seguintes configurações:
-    * **Project:** Maven
-    * **Language:** Java
-    * **Spring Boot(versão):** A versão que vc preferir
-    * **Project Metadata:** como prefefir
-    * **Packaging:** Jar
-    * **Java(versão):** 8(1.8)
-    * **Dependencies:** Spring Boot Dev Tools , Spring Web
-    * Clicar em **Generate** ou **ctrl + Enter**
-  
+* **Project:** Maven
+* **Language:** Java
+* **Spring Boot(versão):** A versão que vc preferir
+* **Project Metadata:** como prefefir
+* **Packaging:** Jar
+* **Java(versão):** 8(1.8)
+* **Dependencies:** Spring Boot Dev Tools , Spring Web
+* Clicar em **Generate** ou **ctrl + Enter**
