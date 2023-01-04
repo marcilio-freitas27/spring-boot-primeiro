@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 //Mavem - Controlador de dependências 
 //pom.xml - onde estão as dependencias do projeto
 @RestController
+//@Controller
 public class PrimeiroController {
 
     //primeiras rotas
@@ -22,8 +23,10 @@ public class PrimeiroController {
         return "E aí!";
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/ola")
-    public String ola(){
+    // nao pode ter a mesma rota, url para o msmo metodo
+    @RequestMapping(method = RequestMethod.GET, path = "/saudacao")
+    public String saudacao(){
         return "Olá Spring Boot";
     }
+
 }
