@@ -1,7 +1,6 @@
 ![Udemy](https://img.shields.io/badge/Udemy-EC5252?style=for-the-badge&logo=Udemy&logoColor=white) ![Spring Boot](https://img.shields.io/badge/Spring_Boot-F2F4F9?style=for-the-badge&logo=spring-boot) ![OpenJDK](https://img.shields.io/badge/OpenJDK-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
 
 ### Spring Boot 
-
 * Meu primeiro projeto com Java + Spring Boot
 * Seguindo o curso da Udemy - Java Completo - 
   
