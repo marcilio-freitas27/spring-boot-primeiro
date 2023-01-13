@@ -15,10 +15,37 @@ public class Produto {
     // estrategia de sequencia de id única
     private int id;
     private String nome;
+    private double preco;
+    private double desconto;
 
-    public Produto(int id, String nome) {
+    public Produto() {
+    }
+
+    public Produto(int id) {
         this.id = id;
+    }
+
+    public Produto(String nome, double preco, double desconto) {
+        // adicionando novos campos o jpa faz um alter table auto
         this.nome = nome;
+        this.preco = preco;
+        this.desconto = desconto;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
+
+    public double getDesconto() {
+        return desconto;
+    }
+
+    public void setDesconto(double desconto) {
+        this.desconto = desconto;
     }
 
     public Produto(String nome) {

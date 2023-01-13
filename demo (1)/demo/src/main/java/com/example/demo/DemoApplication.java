@@ -4,7 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-//annotations
+// annotations
+// le atraves das reflations
 public class DemoApplication {
 	//rodar o spring boot
 	public static void main(String[] args) {

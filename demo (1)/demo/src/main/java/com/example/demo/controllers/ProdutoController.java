@@ -1,5 +1,7 @@
 package com.example.demo.controllers;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,22 +14,32 @@ import com.example.demo.models.entities.Produto;
 import com.example.demo.models.repositories.ProdutoRepository;
 
 @RestController
-@RequestMapping("/api/produtos")
+@RequestMapping("/api")
 public class ProdutoController {
 
-    // @Autowired
-    // private ProdutoRepository produtoRepository;
+    @Autowired
+    //cria um objeto automaticamente
+    private ProdutoRepository produtoRepository;
 
-    @GetMapping
+    @GetMapping("/teste")
     public Produto getProdutos(){
-        return new Produto(1, "Café Santa Clara");
+        return new Produto("Café Santa Clara", 200.00, 0.15);
     }
 
-    @PostMapping
-    public @ResponseBody Produto novoProduto(@RequestParam String nome){
+    @GetMapping
+    public Iterable<Produto> obterProdutos(){
+        return produtoRepository.findAll();
+    }
+
+    @PostMapping(path = "/produtos")
+    public @ResponseBody Produto novoProduto(
+        @RequestParam String nome, 
+        @RequestParam double preco,
+        @RequestParam double desconto
+     ){
         // rsponse body deixa claro que é um resposta com body
-        Produto produto = new Produto(nome);
-        // produtoRepository.save(produto);
+        Produto produto = new Produto(nome, preco, desconto);
+        produtoRepository.save(produto);
         return produto;
     }
 
