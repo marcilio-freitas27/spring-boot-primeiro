@@ -21,7 +21,7 @@ No site [start.spring.io](https://start.spring.io/) gerei o projeto Spring com a
 ### Gerando o build - Tomcat 10 - dicas
 
 - Configurar o pom.xml para gerar o arquivo war
-- Implementar o build e a configuração na classe principal do projeto (demo (1)/demo/srv/java/com/example/demo/DemoApplication.java) ou criar outra classe que é o que acontece neste repositório (demo (1) /demo/srv/java/com/example/demo/ServletInit.java)
+- Implementar o build e a configuração na classe principal do projeto (demo (1)/demo/srv/java/com/example/demo/DemoApplication.java) ou criar outra classe.
 - Entrar na pasta do projeto (demo (1)/demo/)
 - Executar o comando do Maven para gerar o o war:
 

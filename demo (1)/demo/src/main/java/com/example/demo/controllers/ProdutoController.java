@@ -40,17 +40,18 @@ public class ProdutoController {
     @Autowired
     //cria um objeto automaticamente
     private ProdutoRepository produtoRepository;
+    // repositório para a página de produtos
     private ProdutoRepositoryPage produtoRepositoryPage;
 
-    @GetMapping("/teste")
-    public Produto getProdutos(){
-        return new Produto("Café Santa Clara", 200.00, 0.15);
-    }
 
     @GetMapping("/{id}")
+    // Alterei de optional para produto para poder utilizar o orElseThrow() - Suppliers
     public Produto obterProduto(@PathVariable int id){
+        // throw para retornar para o front a mensagem a seguir
         return produtoRepository.findById(id).orElseThrow(() -> new ProdutoNotFoundException("Produto não encontrado com o ID: " + id));
     }
+
+    //exceções
 
     @ExceptionHandler(ProdutoNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
@@ -73,15 +74,16 @@ public class ProdutoController {
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public String handleExceptionNotFound(Exception ex) {
-        return "Erro interno do servidor: " + ex.getMessage();
+        return "Não encontrado: " + ex.getMessage();
     }
+
+    // fim exceções
 
     @GetMapping
     public Iterable<Produto> obterProdutos(){
         //Semelhante ao Generics que o angular usa nos servicos
         return produtoRepository.findAll();
     }
-
 
     @GetMapping(path = "/nome/{parteNome}")
     public Iterable<Produto> obterProdutosPorNome(@PathVariable String parteNome) {
@@ -123,27 +125,9 @@ public class ProdutoController {
         return produto;
     }
 
-    @PostMapping("/produtos2")
-    @ResponseBody
-    public ResponseEntity<Produto> novoProduto2(
-       @RequestBody @Valid Produto produto){
-        Produto prod = produtoRepository.save(produto);
-        return new ResponseEntity<Produto>(prod, HttpStatus.CREATED);
-    }
-
-    // put foi simplificado
-    @PutMapping("/produtos2")
-    @ResponseBody
-    public Produto alterarProduto(
-        @RequestBody @Validated Produto produto){
-        produtoRepository.save(produto);
-        return produto;
-    }
-
     @DeleteMapping("/{id}")
     public void deleteById(@PathVariable int id) {
         produtoRepository.deleteById(id);
     }
-
 
 }
