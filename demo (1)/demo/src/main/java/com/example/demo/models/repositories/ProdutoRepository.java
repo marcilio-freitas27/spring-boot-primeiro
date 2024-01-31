@@ -8,6 +8,7 @@ import com.example.demo.models.entities.Produto;
 
 public interface ProdutoRepository extends CrudRepository<Produto, Integer>{
     //generics <Produto, id>
+    // repository é uma classe que fornecesse acesso aos dados de uma entidade de um banco de dados
 
     // O spring cria automaticamente seguindo as convenções
     public Iterable<Produto> findByNomeContainingIgnoreCase(String parteNome);

@@ -9,6 +9,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
+// indica que o projeto é uma aplicação spring boot
 // annotations
 // le atraves das reflations
 public class DemoApplication extends SpringBootServletInitializer{

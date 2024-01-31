@@ -33,6 +33,7 @@ import com.example.demo.models.repositories.ProdutoRepositoryPage;
 import jakarta.validation.Valid;
 
 @RestController
+//fornecesse acesso as operações de um controller
 @RequestMapping("/produto")
 @CrossOrigin("*")
 public class ProdutoController {
@@ -82,6 +83,7 @@ public class ProdutoController {
     @GetMapping
     public Iterable<Produto> obterProdutos(){
         //Semelhante ao Generics que o angular usa nos servicos
+        System.out.println("get no produto");
         return produtoRepository.findAll();
     }
 
