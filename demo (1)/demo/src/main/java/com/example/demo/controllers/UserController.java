@@ -21,13 +21,12 @@ public class UserController {
           user.getName().equals("user") && user.getPassword().equals("password");
     }
 
-    // @RequestMapping("/logout")
-    // public boolean logout(@RequestBody User user) {
-    //     return
-    //       false;
-    // }
+    @RequestMapping("/logout")
+    public boolean logout(@RequestBody User user) {
+        return
+          false;
+    }
 
-    
     @RequestMapping("/user")
     public Principal user(HttpServletRequest request) {
         String authToken = request.getHeader("Authorization")
