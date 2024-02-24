@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -101,6 +102,21 @@ public class ProdutoController {
         // consulta por nome - criada em produto repository
         // feito em convenção
         return produtoRepository.searchBynameLike(parteNome);
+    }
+
+    @GetMapping("/total")
+    public Double obterTotalPrecos(){
+        return produtoRepository.getTotal();
+    }
+
+    @GetMapping("/media")
+    public Double obterMediaPrecos(){
+        return produtoRepository.getAverage();
+    }
+
+    @GetMapping("/desconto")
+    public List<Double> aplicarDesconto(){
+        return produtoRepository.applyOffer();
     }
 
     @GetMapping(path = "/pagina/{numeroPagina}/{qtdePagina}")

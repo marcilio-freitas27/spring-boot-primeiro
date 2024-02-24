@@ -1,10 +1,13 @@
 package com.example.demo.models.repositories;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import com.example.demo.models.entities.Produto;
+import com.example.demo.sql.ProdutoQueries;
 
 public interface ProdutoRepository extends CrudRepository<Produto, Integer>{
     //generics <Produto, id>
@@ -15,6 +18,15 @@ public interface ProdutoRepository extends CrudRepository<Produto, Integer>{
 
     @Query("SELECT p FROM Produto p Where p.nome LIKE %:nome%")
     public Iterable<Produto> searchBynameLike(@Param("nome") String nome);
+
+    @Query("SELECT SUM(p.preco) FROM Produto p")
+    public Double getTotal();
+
+    @Query("SELECT AVG(p.preco) FROM Produto p")
+    public Double getAverage();
+    
+    @Query(value = ProdutoQueries.APLICAR_DESCONTO)
+    List<Double> applyOffer();
 }
 
 
