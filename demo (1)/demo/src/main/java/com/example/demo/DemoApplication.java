@@ -26,7 +26,8 @@ public class DemoApplication extends SpringBootServletInitializer{
 				registry.addMapping("/demo/**")
 				.allowedOrigins("http://localhost:4200") // ou o endereço do seu frontend
 				.allowedMethods("GET", "POST", "PUT", "DELETE")
-				.allowedHeaders("*");
+				.allowedHeaders("*")
+				.allowCredentials(true);
 			}
 		};
 	}
