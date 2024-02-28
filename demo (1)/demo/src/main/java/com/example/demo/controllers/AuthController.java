@@ -1,8 +1,8 @@
 package com.example.demo.controllers;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,11 +15,22 @@ import com.example.demo.models.entities.Login;
 @RequestMapping("/api/auth")
 @CrossOrigin("*")
 public class AuthController {
-    
+
+    private final BCryptPasswordEncoder passEncoder;
+
+    public AuthController(BCryptPasswordEncoder passEncoder) {
+        this.passEncoder = passEncoder;
+    }
+
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody Login entity) {
-        if("usuario".equals(entity.getUsername()) && "123456".equals(entity.getPassword())) {
-            return ResponseEntity.ok("Seja bem vindo, " + entity.getUsername());
+        String user = entity.getUsername();
+        String pass = entity.getPassword();
+        String hashedPassword = passEncoder.encode(pass);
+
+        if("usuario".equals(user) && passEncoder.matches("123456", hashedPassword)) {
+            String usernameCapitalize = user.substring(0, 1).toUpperCase() + user.substring(1);
+            return ResponseEntity.ok("Seja bem vindo, " + usernameCapitalize);
         }else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Senha ou usuário inválidos");
         }
